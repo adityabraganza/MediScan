@@ -2,6 +2,11 @@ from tkinter import *
 import json
 from jsondata import jsonData
 
+# Style
+butfont = ('calibre', 15)
+dropfont = ('calibre', 15)
+labfontlarge = ('calibre', 13)
+
 
 # Shows a window
 def show(a):
@@ -20,34 +25,60 @@ def hideall():
     hide(Err)
     hide(UplMan)
     hide(InfGUI)
+    hide(AbtGUI)
 
 
 # Common variables
 MedName = "N/A"
 
 # Navigation GUI
+
+HEIGHT = 400
+WIDTH = 900
+
 navgui = Tk()
+navgui.title("Home")
+PhotoIcon = PhotoImage(file="Logo.png")
+navgui.iconphoto(False, PhotoIcon)
+canvasnavgui = Canvas(navgui, width=WIDTH, height=HEIGHT)
+canvasnavgui.pack()
+
+frame = Frame(navgui, bg='#B4A5FF')
+frame.place(relwidth=1, relheight=1, width=WIDTH, height=HEIGHT)
+
+bgimg = PhotoImage(file="bg.png")
+bglabelnav = Label(navgui, image=bgimg)
+bglabelnav.place(x=-5, y=-5)
+
 ddop = [
     "Manual input",
-    "Camera input"
+    "Camera input",
+    "About the makers"
 ]
 ddopclicked = StringVar()
 ddopclicked.set("Manual input")
 ddmenue = OptionMenu(navgui, ddopclicked, *ddop)
-ddmenue.pack()
+ddmenue.config(font=dropfont)
+ddmenue.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 # Upload Image GUI
 UplImg = Toplevel()
 UplImg.title("Upload Image")
 UplImgLabel = Label(UplImg, text="Upload Image!")
+bglabelUplImg = Label(UplImg, image=bgimg)
+bglabelUplImg.place(x=-5, y=-5)
 
 # Upload manually GUI
 UplMan = Toplevel()
 UplMan.title("Enter medicine name")
-UplManLabel = Label(UplMan, text="Whats the medicine's name?")
-UplManLabel.pack()
-UpldManIn = Text(UplMan, height=5, width=20)
-UpldManIn.pack()
+canvasUplMan = Canvas(UplMan, width=WIDTH, height=HEIGHT)
+canvasUplMan.pack()
+bglabelUplMan = Label(UplMan, image=bgimg)
+bglabelUplMan.place(x=-5, y=-5)
+UplManLabel = Label(UplMan, text="Whats the medicine's name?", font=labfontlarge)
+UplManLabel.place(relx=0.5, rely=0.4441, anchor=CENTER)
+UpldManIn = Text(UplMan, height=1, width=20)
+UpldManIn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 # Display information GUI
 InfGUI = Toplevel()
@@ -61,12 +92,39 @@ DataInfLabel_Sciname.pack()
 DataInfLabel_Uses.pack()
 DataInfLabel_SideEff.pack()
 
+
 # Error GUI
 Err = Toplevel()
+ErrLabel1 = Label(Err,
+                  text="Sorry we ran into an error, please try again")
+ErrLabel2 = Label(Err,
+                  text="If you are using the image scanning feature try inputting the medicine name through text")
+ErrLabel3 = Label(Err,
+                  text="If this issue persists please email us at aditya.braganza@gmail.com, and we will assist you")
+ErrLabel1.pack()
+ErrLabel2.pack()
+ErrLabel3.pack()
+
+# About GUI
+AbtGUI = Toplevel()
+AbtGUILab = Label(AbtGUI, text="The makers of the project, Aniket Dewangan, Saahas Ajmera, "
+                               "\nVarun Nair and Aditya Braganza, are a part of the "
+                               "\ncoding team WDKHTC which is a acronym for We Don't Know "
+                               "\nHow To Code. We are coders, who indulge in creating apps "
+                               "\nand other projects that help solve daily life problems. "
+                               "\nOur aim so to make solutions for modern day problems, "
+                               "\nhelping make the lives and jobs of our app's users easier.")
+AbtGUILab.pack()
 
 # Hide at run
 hideall()
 show(navgui)
+
+
+def about():
+    hideall()
+    AbtGUI.iconphoto(False, PhotoIcon)
+    show(AbtGUI)
 
 
 # Checks whether the user wants to manually input the name or use the image recognition system
@@ -75,10 +133,12 @@ def manorimg():
         runuplimg()
     elif ddopclicked.get() == "Manual input":
         maninp()
+    elif ddopclicked.get() == "About the makers":
+        about()
 
 
-navguienterbut = Button(navgui, text="Enter", command=manorimg)
-navguienterbut.pack()
+navguienterbut = Button(navgui, text="Go there", command=manorimg, font=butfont)
+navguienterbut.place(relx=0.5, rely=0.61, anchor=CENTER)
 
 
 # Function opens GUI that displays information
@@ -88,6 +148,7 @@ def infgui():
     global DataInfLabel_Uses
     global DataInfLabel_SideEff
     hideall()
+    InfGUI.iconphoto(False, PhotoIcon)
     show(InfGUI)
     InfGUI.title(MedName.title())
     DataInfLabel_Medname.config(text="Common name: "+DataInfGUI['medicines'])
@@ -102,9 +163,20 @@ def runnavgui():
     show(navgui)
 
 
+ErrHome = Button(Err, text="Home", command=runnavgui)
+ErrHome.pack()
+AbtGUIBut = Button(AbtGUI, text="Home", command=runnavgui)
+AbtGUIBut.pack()
+
+
+ExitButtInfGUI = Button(InfGUI, text="Home", command=runnavgui)
+ExitButtInfGUI.pack()
+
+
 # Function opens GUI for uploading image
 def runuplimg():
     hideall()
+    UplImg.iconphoto(False, PhotoIcon)
     show(UplImg)
     UplImg.title("Upload image")
     UplImgLabel.pack()
@@ -113,12 +185,15 @@ def runuplimg():
 # Function opens GUI for manually entering scientific name
 def maninp():
     hideall()
+    UplMan.iconphoto(False, PhotoIcon)
     show(UplMan)
 
 
 # Function opens GUI for errors
 def err():
-    pass
+    hideall()
+    Err.iconphoto(False, PhotoIcon)
+    show(Err)
 
 
 # Function enters the value for manually inputting medicine name
@@ -152,15 +227,14 @@ def uplmanent():
         DataInfGUI = (meddata["medicines"][7])
         infgui()
     elif MedName.lower() == "Fexofenadine hydrochloride tablets".lower():
-        print(meddata["medicines"][8])
+        DataInfGUI = (meddata["medicines"][8])
         infgui()
 
     else:
-        print(MedName)
-        print("Not in list")
+        err()
 
 
-UplManEnter = Button(UplMan, command=uplmanent)
-UplManEnter.pack()
+UplManEnter = Button(UplMan, text="Enter", command=uplmanent)
+UplManEnter.place(relx=0.5, rely=0.5559, anchor=CENTER)
 
 navgui.mainloop()
