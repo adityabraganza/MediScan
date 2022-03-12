@@ -38,6 +38,7 @@ WIDTH = 900
 
 navgui = Tk()
 navgui.title("Home")
+navgui.attributes('-alpha', 0.93)
 PhotoIcon = PhotoImage(file="Logo.png")
 navgui.iconphoto(False, PhotoIcon)
 canvasnavgui = Canvas(navgui, width=WIDTH, height=HEIGHT)
@@ -72,6 +73,7 @@ bglabelUplImg.place(x=-5, y=-5)
 UplMan = Toplevel()
 UplMan.title("Enter medicine name")
 canvasUplMan = Canvas(UplMan, width=WIDTH, height=HEIGHT)
+UplMan.attributes('-alpha', 0.93)
 canvasUplMan.pack()
 bglabelUplMan = Label(UplMan, image=bgimg)
 bglabelUplMan.place(x=-5, y=-5)
@@ -95,15 +97,20 @@ DataInfLabel_SideEff.pack()
 
 # Error GUI
 Err = Toplevel()
+canvasErr = Canvas(Err, width=WIDTH, height=HEIGHT)
+Err.attributes('-alpha', 0.93)
+canvasErr.pack()
+bglabelErr = Label(Err, image=bgimg)
+bglabelErr.place(x=-5, y=-5)
 ErrLabel1 = Label(Err,
                   text="Sorry we ran into an error, please try again")
 ErrLabel2 = Label(Err,
                   text="If you are using the image scanning feature try inputting the medicine name through text")
 ErrLabel3 = Label(Err,
                   text="If this issue persists please email us at aditya.braganza@gmail.com, and we will assist you")
-ErrLabel1.pack()
-ErrLabel2.pack()
-ErrLabel3.pack()
+ErrLabel1.place(relx=0.5, rely=0.45, anchor=CENTER)
+ErrLabel2.place(relx=0.5, rely=0.5, anchor=CENTER)
+ErrLabel3.place(relx=0.5, rely=0.545, anchor=CENTER)
 
 # About GUI
 AbtGUI = Toplevel()
@@ -164,7 +171,7 @@ def runnavgui():
 
 
 ErrHome = Button(Err, text="Home", command=runnavgui)
-ErrHome.pack()
+ErrHome.place(relx=0.5, rely=0.65, anchor=CENTER)
 AbtGUIBut = Button(AbtGUI, text="Home", command=runnavgui)
 AbtGUIBut.pack()
 
