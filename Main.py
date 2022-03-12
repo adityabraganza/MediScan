@@ -52,6 +52,14 @@ UpldManIn.pack()
 # Display information GUI
 InfGUI = Toplevel()
 DataInfGUI = "Null"
+DataInfLabel_Medname = Label(InfGUI, text="N/A")
+DataInfLabel_Sciname = Label(InfGUI, text="N/A")
+DataInfLabel_Uses = Label(InfGUI, text="N/A")
+DataInfLabel_SideEff = Label(InfGUI, text="N/A")
+DataInfLabel_Medname.pack()
+DataInfLabel_Sciname.pack()
+DataInfLabel_Uses.pack()
+DataInfLabel_SideEff.pack()
 
 # Error GUI
 Err = Toplevel()
@@ -75,9 +83,17 @@ navguienterbut.pack()
 
 # Function opens GUI that displays information
 def infgui():
+    global DataInfLabel_Medname
+    global DataInfLabel_Sciname
+    global DataInfLabel_Uses
+    global DataInfLabel_SideEff
     hideall()
     show(InfGUI)
     InfGUI.title(MedName.title())
+    DataInfLabel_Medname.config(text="Common name: "+DataInfGUI['medicines'])
+    DataInfLabel_Sciname.config(text="Scientific name: "+DataInfGUI['scientific name'])
+    DataInfLabel_Uses.config(text="Usage: "+DataInfGUI['uses'])
+    DataInfLabel_SideEff.config(text="Side effects: "+DataInfGUI['side effects'])
 
 
 # Function opens navigation GUI
