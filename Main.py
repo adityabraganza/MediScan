@@ -34,11 +34,10 @@ MedName = "N/A"
 # Navigation GUI
 
 HEIGHT = 400
-WIDTH = 900
+WIDTH = 960
 
 navgui = Tk()
 navgui.title("Home")
-navgui.attributes('-alpha', 0.93)
 PhotoIcon = PhotoImage(file="Logo.png")
 navgui.iconphoto(False, PhotoIcon)
 canvasnavgui = Canvas(navgui, width=WIDTH, height=HEIGHT)
@@ -73,7 +72,6 @@ bglabelUplImg.place(x=-5, y=-5)
 UplMan = Toplevel()
 UplMan.title("Enter medicine name")
 canvasUplMan = Canvas(UplMan, width=WIDTH, height=HEIGHT)
-UplMan.attributes('-alpha', 0.93)
 canvasUplMan.pack()
 bglabelUplMan = Label(UplMan, image=bgimg)
 bglabelUplMan.place(x=-5, y=-5)
@@ -84,6 +82,10 @@ UpldManIn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 # Display information GUI
 InfGUI = Toplevel()
+canvasInf = Canvas(InfGUI, width=WIDTH, height=HEIGHT)
+canvasInf.pack()
+bglabelInf = Label(InfGUI, image=bgimg)
+bglabelInf.place(x=-5, y=-5)
 DataInfGUI = "Null"
 DataInfLabel_Medname = Label(InfGUI, text="N/A")
 DataInfLabel_Sciname = Label(InfGUI, text="N/A")
@@ -98,7 +100,6 @@ DataInfLabel_SideEff.pack()
 # Error GUI
 Err = Toplevel()
 canvasErr = Canvas(Err, width=WIDTH, height=HEIGHT)
-Err.attributes('-alpha', 0.93)
 canvasErr.pack()
 bglabelErr = Label(Err, image=bgimg)
 bglabelErr.place(x=-5, y=-5)
@@ -114,6 +115,10 @@ ErrLabel3.place(relx=0.5, rely=0.545, anchor=CENTER)
 
 # About GUI
 AbtGUI = Toplevel()
+canvasAbt = Canvas(AbtGUI, width=WIDTH, height=HEIGHT)
+canvasAbt.pack()
+bglabelAbt = Label(AbtGUI, image=bgimg)
+bglabelAbt.place(x=-5, y=-5)
 AbtGUILab = Label(AbtGUI, text="The makers of the project, Aniket Dewangan, Saahas Ajmera, "
                                "\nVarun Nair and Aditya Braganza, are a part of the "
                                "\ncoding team WDKHTC which is a acronym for We Don't Know "
@@ -121,7 +126,7 @@ AbtGUILab = Label(AbtGUI, text="The makers of the project, Aniket Dewangan, Saah
                                "\nand other projects that help solve daily life problems. "
                                "\nOur aim so to make solutions for modern day problems, "
                                "\nhelping make the lives and jobs of our app's users easier.")
-AbtGUILab.pack()
+AbtGUILab.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 # Hide at run
 hideall()
@@ -159,9 +164,13 @@ def infgui():
     show(InfGUI)
     InfGUI.title(MedName.title())
     DataInfLabel_Medname.config(text="Common name: "+DataInfGUI['medicines'])
+    DataInfLabel_Medname.place(relx=0.5, rely=0.425, anchor=CENTER)
     DataInfLabel_Sciname.config(text="Scientific name: "+DataInfGUI['scientific name'])
+    DataInfLabel_Sciname.place(relx=0.5, rely=0.475, anchor=CENTER)
     DataInfLabel_Uses.config(text="Usage: "+DataInfGUI['uses'])
+    DataInfLabel_Uses.place(relx=0.5, rely=0.52, anchor=CENTER)
     DataInfLabel_SideEff.config(text="Side effects: "+DataInfGUI['side effects'])
+    DataInfLabel_SideEff.place(relx=0.5, rely=0.57, anchor=CENTER)
 
 
 # Function opens navigation GUI
@@ -173,7 +182,7 @@ def runnavgui():
 ErrHome = Button(Err, text="Home", command=runnavgui)
 ErrHome.place(relx=0.5, rely=0.65, anchor=CENTER)
 AbtGUIBut = Button(AbtGUI, text="Home", command=runnavgui)
-AbtGUIBut.pack()
+AbtGUIBut.place(relx=0.5, rely=0.67, anchor=CENTER)
 
 
 ExitButtInfGUI = Button(InfGUI, text="Home", command=runnavgui)
@@ -230,7 +239,7 @@ def uplmanent():
     elif MedName.lower() == "Paracetamol".lower():
         DataInfGUI = (meddata["medicines"][6])
         infgui()
-    elif MedName.lower() == "zincovit".lower():
+    elif MedName.lower() == "Zincovit".lower():
         DataInfGUI = (meddata["medicines"][7])
         infgui()
     elif MedName.lower() == "Fexofenadine hydrochloride tablets".lower():

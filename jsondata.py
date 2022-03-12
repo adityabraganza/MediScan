@@ -21,7 +21,7 @@ jsonData = '''
         "medicines": "Ferium",
         "scientific name":"Hydroxide polymaltose complex and folic acid tablets",
         "uses": "Helps in deficiency of red blood cells",
-        "side effects":"Loss Of Appetite,Dry Mouth."
+        "side effects":"Loss Of Appetite, Dry Mouth."
 
     },
     {
@@ -55,7 +55,7 @@ jsonData = '''
     {
         "medicines": "Zeredol-P",
         "scientific name":"Paracetomol ",
-        "uses": "Zerodol-P Tablet is a pain-relieving medicine. It is used to reduce pain and inflammation in conditions like rheumatoid arthritis, ankylosing spondylitis, and osteoarthritis. It may also be used to relieve muscle pain, back pain, toothache, or pain in the ear and throat.",
+        "uses": "Zerodol-P Tablet is a pain-relieving medicine. It is used to reduce pain and inflammation in conditions like rheumatoid arthritis, ankylosing spondylitis, and osteoarthritis.",
         "side effects":"Nausea, vomiting, stomach pain, skin rash, cloudy urine, loss of appetite, constipation, heartburn, diarrhea, drowsiness, gastric or mouth ulcers"
     },
     {
