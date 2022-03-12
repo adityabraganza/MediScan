@@ -1,5 +1,3 @@
-import json
-
 jsonData = '''
 
 
@@ -93,9 +91,3 @@ jsonData = '''
 }
 
 '''
-
-Medicine = input("Whats the Scientific Name of the Medicine that you want to use?: ")
-
-data = json.loads(jsonData)
-
-... (20 lines left)
