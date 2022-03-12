@@ -152,7 +152,7 @@ def uplmanent():
         DataInfGUI = (meddata["medicines"][7])
         infgui()
     elif MedName.lower() == "Fexofenadine hydrochloride tablets".lower():
-        DataInfGUI = (meddata["medicines"][8])
+        print(meddata["medicines"][8])
         infgui()
 
     else:
