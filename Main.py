@@ -2,7 +2,6 @@ from tkinter import *
 import json
 from jsondata import jsonData
 
-# Json data for the medicine
 
 # Shows a window
 def show(a):
@@ -20,6 +19,8 @@ def hideall():
     hide(UplImg)
     hide(Err)
     hide(UplMan)
+    hide(InfGUI)
+
 
 # Common variables
 MedName = "N/A"
@@ -48,6 +49,10 @@ UplManLabel.pack()
 UpldManIn = Text(UplMan, height=5, width=20)
 UpldManIn.pack()
 
+# Display information GUI
+InfGUI = Toplevel()
+DataInfGUI = "Null"
+
 # Error GUI
 Err = Toplevel()
 
@@ -71,28 +76,8 @@ navguienterbut.pack()
 # Function opens GUI that displays information
 def infgui():
     hideall()
-    meddata = json.loads(jsonData)
-    if MedName.lower() == "Albuterol".lower():
-        print(meddata["medicines"][0])
-    elif MedName.lower() == "loperamide hydrochloride capsules".lower():
-        print(meddata["medicines"][1])
-    elif MedName.lower() == "hydroxide polymaltose complex and folic acid tablets".lower():
-        print(meddata["medicines"][2])
-    elif MedName.lower() == "ranitinide tablets".lower():
-        print(meddata["medicines"][3])
-    elif MedName.lower() == "rondansetron tablets".lower():
-        print(meddata["medicines"][4])
-    elif MedName.lower() == "Ofloxacin".lower():
-        print(meddata["medicines"][5])
-    elif MedName.lower() == "Paracetamol".lower():
-        print(meddata["medicines"][6])
-    elif MedName.lower() == "zincovit".lower():
-        print(meddata["medicines"][7])
-    elif MedName.lower() == "Fexofenadine hydrochloride tablets".lower():
-        print(meddata["medicines"][8])
-    else:
-        print(MedName)
-        print("Not in list")
+    show(InfGUI)
+    InfGUI.title(MedName.title())
 
 
 # Function opens navigation GUI
@@ -113,8 +98,6 @@ def runuplimg():
 def maninp():
     hideall()
     show(UplMan)
-    UplImg.title("Upload image")
-    UplImgLabel.pack()
 
 
 # Function opens GUI for errors
@@ -125,8 +108,40 @@ def err():
 # Function enters the value for manually inputting medicine name
 def uplmanent():
     global MedName
+    global DataInfGUI
     MedName = UpldManIn.get(1.0, "end-1c")
-    infgui()
+    meddata = json.loads(jsonData)
+    if MedName.lower() == "Albuterol".lower():
+        DataInfGUI = (meddata["medicines"][0])
+        infgui()
+    elif MedName.lower() == "loperamide hydrochloride capsules".lower():
+        DataInfGUI = (meddata["medicines"][1])
+        infgui()
+    elif MedName.lower() == "hydroxide polymaltose complex and folic acid tablets".lower():
+        DataInfGUI = (meddata["medicines"][2])
+        infgui()
+    elif MedName.lower() == "ranitinide tablets".lower():
+        DataInfGUI = (meddata["medicines"][3])
+        infgui()
+    elif MedName.lower() == "rondansetron tablets".lower():
+        DataInfGUI = (meddata["medicines"][4])
+        infgui()
+    elif MedName.lower() == "Ofloxacin".lower():
+        DataInfGUI = (meddata["medicines"][5])
+        infgui()
+    elif MedName.lower() == "Paracetamol".lower():
+        DataInfGUI = (meddata["medicines"][6])
+        infgui()
+    elif MedName.lower() == "zincovit".lower():
+        DataInfGUI = (meddata["medicines"][7])
+        infgui()
+    elif MedName.lower() == "Fexofenadine hydrochloride tablets".lower():
+        print(meddata["medicines"][8])
+        infgui()
+
+    else:
+        print(MedName)
+        print("Not in list")
 
 
 UplManEnter = Button(UplMan, command=uplmanent)
