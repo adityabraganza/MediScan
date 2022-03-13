@@ -26,6 +26,7 @@ def hideall():
     hide(UplMan)
     hide(InfGUI)
     hide(AbtGUI)
+    hide(sympGUI)
 
 
 # Common variables
@@ -34,7 +35,7 @@ MedName = "N/A"
 # Navigation GUI
 
 HEIGHT = 400
-WIDTH = 960
+WIDTH = 950
 
 navgui = Tk()
 navgui.title("Home")
@@ -53,7 +54,8 @@ bglabelnav.place(x=-5, y=-5)
 ddop = [
     "Manual input",
     "Camera input",
-    "About the makers"
+    "About the makers",
+    "Symptom reference"
 ]
 ddopclicked = StringVar()
 ddopclicked.set("Manual input")
@@ -128,6 +130,47 @@ AbtGUILab = Label(AbtGUI, text="The makers of the project, Aniket Dewangan, Saah
                                "\nhelping make the lives and jobs of our app's users easier.")
 AbtGUILab.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+# Work bench
+sympGUI = Toplevel()
+canvasSymp = Canvas(sympGUI, width=WIDTH, height=HEIGHT)
+bglabelSymp = Label(sympGUI, image=bgimg)
+bglabelSymp.place(x=-5, y=-5)
+canvasSymp.pack()
+
+sympIn = Text(sympGUI, height=1, width=20)
+sympIn.place(relx=0.5, rely=0.475, anchor=CENTER)
+sympLab = Label(sympGUI, height=1, width=20, text="Enter your symptom")
+sympIn.place(relx=0.5, rely=0.475, anchor=CENTER)
+
+
+def sympinGUI():
+    hideall()
+    show(sympGUI)
+
+
+def symprun():
+    f = open('symptoms.json')
+    data = json.load(f)
+    searchTerm = sympIn.get(1.0, "end-1c")
+    for dict in data:
+        if dict['symptoms'].find(searchTerm) != -1:
+            print("Name of Possible Disease/Problem: " + dict['disease_name'])
+            print("Severity Level:  " + dict['severity_level'])
+            print("Possible Treatments: " + dict['treatments'])
+            print("WARNING: THIS IS NOT A DIAGNOSIS OR A PRESCRIPTION, PLEASE CONSULT WITH A DOCTOR IF YOU FEEL THE "
+                  "NEED TO")
+
+
+entsymp = Button(sympGUI, text="Enter", command=symprun)
+entsymp.place(relx=0.5, rely=0.55, anchor=CENTER)
+
+
+def runsympGUI():
+    hideall()
+    show(sympGUI)
+# Work bench
+
+
 # Hide at run
 hideall()
 show(navgui)
@@ -147,6 +190,8 @@ def manorimg():
         maninp()
     elif ddopclicked.get() == "About the makers":
         about()
+    elif ddopclicked.get() == "Symptom reference":
+        sympinGUI()
 
 
 navguienterbut = Button(navgui, text="Go there", command=manorimg, font=butfont)
@@ -186,7 +231,7 @@ AbtGUIBut.place(relx=0.5, rely=0.67, anchor=CENTER)
 
 
 ExitButtInfGUI = Button(InfGUI, text="Home", command=runnavgui)
-ExitButtInfGUI.pack()
+ExitButtInfGUI.place(relx=0.5, rely=0.65, anchor=CENTER)
 
 
 # Function opens GUI for uploading image

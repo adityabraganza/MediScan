@@ -1,0 +1,32 @@
+[
+    {
+        "disease_name" : "Heart Attack" ,
+        "symptoms" : "Chest Pain, Pain in Left Arm, Shortness of Breath, Discomfort" ,
+        "severity_level" : "High" ,
+        "treatments" : "Aspirin, Nitroglycerin, ACE Inhibitors, Beta Blockers"
+    },
+    {
+        "disease_name" : "Cancer" ,
+        "symptoms" : "Fatigue, Skin Changes, Persistent Coughing, Weight Changes" ,
+        "severity_level" : "Very High (Based on Different Stages)" ,
+        "treatments" : "surgery, radiation, chemotherapy"
+    },
+    {
+        "disease_name" : "Hemarrhoid" ,
+        "symptoms" : "Itching, Discomfort, Pain, Swelling" ,
+        "severity_level" : "Medium" ,
+        "treatments" : "Witch Hazel, High Fibre Diet, Hydrocortisone"
+    },
+    {
+        "disease_name" : "Chronic Lower Respiratory Disease" ,
+        "symptoms" : "Chronic Cough, Shortness of Breath, Phlegm Production, Frequent Colds, Chest Pain" ,
+        "severity_level" : "High" ,
+        "treatments" : "Bronchodilators, Corticosteroids"
+    },
+    {
+        "disease_name" : "Psoriasis" ,
+        "symptoms" : "Red Patches, Swelling, Dry Skin, Itching" ,
+        "severity_level" : "Medium" ,
+        "treatments" : "Steroids, Photodynamic Therapy, Vitamin A"
+    }
+]

@@ -27,7 +27,7 @@ jsonData = '''
     {
         "medicines": "Rantac",
         "scientific name":"Ranitinide tablets",
-        "uses": "Rantac tablets are used for Heartburn, Indigestion and acidity.",
+        "uses": "Rantac tablets are used for Heartburn, Indigestion and acidity",
         "side effects":"Headache, Diarrhea or Constipation."
 
     },
@@ -67,7 +67,7 @@ jsonData = '''
     },
     {
         "medicines": "Allegra",
-        "scientific name":"Fexofenadine hydrochloride tablets.",
+        "scientific name":"Fexofenadine hydrochloride tablets",
         "uses": "",
         "side effects":"Headache, nausea"
 
