@@ -256,7 +256,6 @@ def err():
     Err.iconphoto(False, PhotoIcon)
     show(Err)
 
-
 # Function enters the value for manually inputting medicine name
 def uplmanent():
     global MedName
